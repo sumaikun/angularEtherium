@@ -1,0 +1,17 @@
+@import "../../assets/scss/mixins";
+.form-container{
+  background-color: white;
+  padding:8%;
+  border-radius: 25px;
+  @include simpleBorder;
+}
+
+#bill-table{
+  @include simpleBorder;
+}
+
+#submitButton{
+  @include sameHeighwidth(100px);
+  border-radius: 100%;
+  margin-top: 25px;
+}

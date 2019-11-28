@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="form-group" style="text-align:center">
+    <label id="select-title" >Selecciona la empresa</label>
+    <select class="form-control" [(ngModel)]="selectedCustomer"
+    (change)="changeSelected()">
+      <option value="" >Selecciona</option>
+      <option *ngFor="let obj of customerList" [ngValue]="obj">{{obj.razonSocial}} nit: {{obj.nitEmpresa}}</option>
+    </select>
+  </div>
+</div>

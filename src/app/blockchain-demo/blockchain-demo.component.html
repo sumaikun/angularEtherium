@@ -1,0 +1,29 @@
+<div class="container">
+
+  <div class="col-lg-8 col-md-8 centerContent">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Clientes registrados en blockchain</h4>
+        {{ blockCustomers.length }}
+          <table class="table-bordered" width="100%">
+            <thead class="textCentered">
+              <tr>
+                <th>Razón social</th>
+                <th>Nit</th>
+                <th>Numero de contacto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let obj of blockCustomers" >
+                <td>{{obj.bussinesName}}</td>
+                <td>{{obj.bussinessId}}</td>
+                <td>{{obj.contactPhone}}</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+
+  </div>
+
+</div>

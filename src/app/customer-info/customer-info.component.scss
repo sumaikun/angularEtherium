@@ -1,0 +1,22 @@
+@import "../../assets/scss/mixins";
+
+$documentImage: "../../assets/images/document.jpg";
+
+$trackingImage: "../../assets/images/tracking.jpeg";
+
+.options{
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+#document{
+  @include backgroundCover($documentImage);
+  height: 500px;
+  background-size: 100% 100%;
+}
+
+#tracking{
+  @include backgroundCover($trackingImage);
+  height: 500px;
+  background-size: 100% 100%;
+}

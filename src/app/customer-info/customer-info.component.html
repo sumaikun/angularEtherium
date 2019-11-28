@@ -1,0 +1,126 @@
+<app-customer-list (selectedEmitter)="customerChange($event)"></app-customer-list>
+
+<div class="row options">
+
+  <div class="col-lg-6 col-md-6 ">
+    <div class="card person-card ">
+      <div class="card-body" id="document">
+        <h3>Documentos</h3>
+        <br/>
+        <div [hidden]="avaliableInvoices.length === 0" class="form-group" style="margin-top:360px;">
+          <select class="form-control" (change)="changeInvoice($event.target.value,template)">
+            <option value="">Selecciona</option>
+            <option *ngFor="let obj of avaliableInvoices" [ngValue]="obj">{{obj.transactionId}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6 col-md-6" >
+    <div class="card person-card ">
+      <div class="card-body" id="tracking" >
+        <h3>Rastreo</h3>
+        <br/>
+        <div [hidden]="avaliableTracks.length === 0" class="form-group" style="margin-top:360px;">
+          <button class="form-control btn btn-primary" (click)="openModal(template2)">Verificar Trazas</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!--
+  <button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>
+-->
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <table class="table table-bordered table-responsive">
+      <tr>
+        <td>Nit empresa de apes</td>
+        <td>{{currentWatchingInvoice.destinatary._customer}}</td>
+      </tr>
+      <tr>
+        <td>Nombre del destinatario</td>
+        <td>{{currentWatchingInvoice.destinatary._destName}}</td>
+      </tr>
+      <tr>
+        <td>Telefono del destinatario</td>
+        <td>{{currentWatchingInvoice.destinatary._destPhone}}</td>
+      </tr>
+      <tr>
+        <td>País del destinatario</td>
+        <td>{{currentWatchingInvoice.destinatary._destCountry}}</td>
+      </tr>
+      <tr>
+        <td>Ciudad del destinatario</td>
+        <td>{{currentWatchingInvoice.destinatary._destCity}}</td>
+      </tr>
+      <tr>
+        <td>Dirección del destinatario</td>
+        <td>{{currentWatchingInvoice.destinatary._destDeliverAddress}}</td>
+      </tr>
+    </table>
+    <table class="table table-bordered table-responsive">
+      <thead>
+        <tr>
+          <th>Cantidad</th>
+          <th>Descripcion</th>
+          <th>Medidas</th>
+          <th>Peso</th>
+          <th>Venta</th>
+          <th>Servicio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let obj of currentWatchingInvoice.items" >
+          <td> {{ obj.quantity }} </td>
+          <td> {{ obj.description }} </td>
+          <td> {{ obj.measures }} </td>
+          <td> {{ obj.weight }} </td>
+          <td> {{ obj.commercialValue  }} </td>
+          <td> {{ obj.serviceValue }} </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>
+
+<ng-template #template2>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <table class="table table-bordered table-responsive">
+      <thead>
+        <tr>
+          <th>traceAction</th>
+          <th>reportSource</th>
+          <th>location</th>
+          <th>itemIdentification</th>
+          <th>date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let obj of avaliableTracks" >
+          <td> {{ obj.traceAction }} </td>
+          <td> {{ obj.reportSource }} </td>
+          <td> {{ obj.location }} </td>
+          <td> {{ obj.itemIdentification }} </td>
+          <td> {{ returnFormatedDate(obj.date)  }} </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>

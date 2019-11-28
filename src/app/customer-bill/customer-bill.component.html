@@ -1,0 +1,147 @@
+<div class="container">
+  <div class="row">
+
+
+
+
+    <div class="col-lg-6 col-md-6 ">
+
+      <div class="form-container container " style="margin-bottom:15px">
+        <app-customer-list (selectedEmitter)="customerChange($event)"></app-customer-list>
+        <br/>
+      </div>
+
+      <div class="form-container container ">
+
+        <h3 class="text-center">DATOS DE DESTINATARIO</h3>
+
+         <hr>
+         <div class="row">
+           <div class="col-xs-6 col-sm-6 col-md-6">
+               <div class="form-group">
+                   <input type="text" name="first_name" id="first_name" [(ngModel)]="bill.destinatary.first_name"
+                     class="form-control input-sm" placeholder="Nombre">
+              </div>
+           </div>
+           <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                  <input type="text" name="last_name" id="last_name" [(ngModel)]="bill.destinatary.last_name"
+                   class="form-control input-sm" placeholder="Apellido">
+              </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="email" name="email" id="email" [(ngModel)]="bill.destinatary.email"
+              class="form-control input-sm" placeholder="Correo electrónico">
+            </div>
+          </div>
+
+          <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                  <input type="text" name="phone" id="phone" [(ngModel)]="bill.destinatary.phone"
+                   class="form-control input-sm" placeholder="Teléfono">
+              </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group" style="text-align:center; font-weight:bold">
+              <label>Fecha</label>
+              <input type="date"  class="form-control" [(ngModel)]="bill.destinatary.date" >
+              <!--<textarea class="form-control" placeholder="detalles" [(ngModel)]="bill.destinatary.details"></textarea>-->
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group" style="text-align:center; font-weight:bold">
+              <label>Detalles</label>
+              <textarea class="form-control" placeholder="detalles" [(ngModel)]="bill.destinatary.details"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-4">
+            <div class="form-group">
+              <input type="text" name="country" id="country" class="form-control input-sm" [(ngModel)]="bill.destinatary.country"
+               placeholder="país">
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-4 col-md-4">
+            <div class="form-group">
+              <input type="text" name="city" id="city" class="form-control input-sm" [(ngModel)]="bill.destinatary.city"
+               placeholder="ciudad">
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-4 col-md-4">
+            <div class="form-group">
+              <input type="text" name="address" id="address" class="form-control input-sm" [(ngModel)]="bill.destinatary.address"
+               placeholder="dirección">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-lg-6 col-md-6">
+
+      <div class="row">
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="container form-container">
+            <table class="table table-bordered table-responsive" style="font-size:12px;" id="bill-table">
+              <thead>
+                <tr>
+                  <th>Cantidad</th>
+                  <th>Descripción de la mercancia</th>
+                  <th>Medidas</th>
+                  <th>peso</th>
+                  <th>valor comercial</th>
+                  <th>valor de servicio</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of billItems" (dblclick)="identifyItem(item)">
+                  <td contenteditable="true" class="onlyNumbers" name="myFormName" [(ngModel)]="item.quantity" ngDefaultControl></td>
+                  <td contenteditable="true" name="myFormName" [(ngModel)]="item.description" ngDefaultControl></td>
+                  <td contenteditable="true" name="myFormName" [(ngModel)]="item.size" ngDefaultControl></td>
+                  <td contenteditable="true" name="myFormName" [(ngModel)]="item.weigth" ngDefaultControl></td>
+                  <td contenteditable="true" class="onlyNumbers" name="myFormName" [(ngModel)]="item.total" ngDefaultControl></td>
+                  <td contenteditable="true" class="onlyNumbers" name="myFormName" [(ngModel)]="item.service" ngDefaultControl></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="form-group">
+              <button class="form-control btn btn-default" (click)="addRow()" >Agregar fila</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12" style="display:flex;justify-content:center;">
+          <button class="form-control btn btn-success" id="submitButton" (click)="sendBill()" >Enviar</button>
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+
+</div>

@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./assets/scss/mixins";
+@import "~@ng-select/ng-select/themes/material.theme.css";
+
+
+$buildingBack: "./assets/images/buildings.png";
+
+
+button:focus {
+  outline: none;
+}
+
+body{
+  height: $fullHeight;
+  @include backgroundCover($buildingBack);
+}

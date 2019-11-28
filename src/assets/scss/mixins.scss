@@ -1,0 +1,43 @@
+$fullHeight: 100vh;
+$Redcolor: #EC694D;
+$almostWhiteColor: #ffffffc7;
+
+@mixin simpleBorder($borderColor:black,$borderWidth:1px,$backgroundColor:white,$borderStyle:solid)
+{
+  border-color: $borderColor;
+  border-width: $borderWidth;
+  background-color:$backgroundColor;
+  border-style: $borderStyle;
+}
+
+@mixin sameHeighwidth($size)
+{
+  width:$size;
+  height: $size;
+}
+
+@mixin backgroundCover($image)
+{
+  background-image: url($image);
+  background-size: cover;
+}
+
+@mixin customText($color,$weight,$size:"nothing")
+{
+  color:$color ;
+  font-weight: $weight;
+  @if($size != "nothing")
+  {
+    font-size: $size;
+  }
+}
+
+%centerAsTable{
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.textCentered{
+  text-align: center;
+}

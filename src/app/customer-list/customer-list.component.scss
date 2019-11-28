@@ -1,0 +1,4 @@
+@import "../../assets/scss/mixins";
+#select-title{
+  @include customText(#c37272,bold,20px);
+}

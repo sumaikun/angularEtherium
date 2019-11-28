@@ -1,0 +1,34 @@
+@import "../assets/scss/mixins";
+
+$planeBack:"../assets/images/plane.png";
+
+
+#sideBar{
+  height: $fullHeight;
+  background-image: url($planeBack);
+  background-color: $Redcolor;
+  background-repeat:no-repeat;
+  background-size: 300px;
+  width: 200px;
+  background-position-x: -100px;
+  background-position-y: 80%;
+}
+
+#container{
+  height: $fullHeight;
+}
+
+
+#close_button{
+  width:100%;
+  @include simpleBorder;
+}
+
+#openMenuButton{
+  border-radius: 100%;
+  @include backgroundCover($planeBack);
+  @include simpleBorder;
+  @include sameHeighwidth(100px);
+  margin-top:15px;
+  margin-left:15px;
+}

@@ -1,0 +1,190 @@
+<div class="container" style="margin-bottom: 5em; margin-top:-3em;">
+    <!-- Sign up form -->
+      <form (ngSubmit)="register()" id="customerForm" ngNativeValidate>
+
+        <!-- Sign up card -->
+          <div class="card person-card">
+            <div class="card-body">
+                <!-- Sex image -->
+                <img id="img_sex" class="person-img"
+                    src="https://visualpharm.com/assets/217/Life%20Cycle-595b40b75ba036ed117d9ef0.svg">
+                <h2 id="who_message" class="card-title">¡Datos de la empresa!</h2>
+                <!-- First row (on medium screen) -->
+                <div class="row">
+
+                    <div class="col-md-1" ></div>
+
+                    <div class="form-group col-md-5">
+
+                        <input id="name" type="text" [(ngModel)]="customer.razonSocial"
+                         class="form-control" placeholder="Razón social"  name="razonSocial" required>
+                        <div id="first_name_feedback" class="invalid-feedback">
+                        </div>
+
+                    </div>
+
+                    <div class="form-group col-md-5">
+                        <select id="input_society" class="form-control"
+                          [(ngModel)]="customer.tipoSociedad" name="tipoSociedad">
+                            <option>Selecciona el tipo de sociedad</option>
+                            <option value="SC">Sociedades Colectivas</option>
+                            <option value="SCS">Sociedades en Comandita Simple</option>
+                            <option value="SCA">Sociedades en Comandita por Acciones</option>
+                            <option value="SCI">Sociedades de Capital e Industria</option>
+                            <option value="SRL">Sociedad de Responsabilidad Limitada</option>
+                            <option value="SA">Sociedades Anónimas</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-1" ></div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-1" ></div>
+
+                    <div class="form-group col-md-5">
+
+                        <input id="identification" type="number" class="form-control"
+                         placeholder="Nit de la empresa" [(ngModel)]="customer.nitEmpresa" name="nitEmpresa">
+                        <div id="identification_feedback" class="invalid-feedback">
+                        </div>
+
+                    </div>
+
+                    <div class="form-group col-md-5">
+                      <input id="activity" type="number" class="form-control"
+                       placeholder="Actividad de la empresa (CIUU)" [(ngModel)]="customer.actividadEmpresa"
+                       name="actividadEmpresa">
+                      <div id="activity_feedback" class="invalid-feedback">
+                      </div>
+                    </div>
+
+                    <div class="col-md-1" ></div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6" style="padding=0.5em;">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Datos de representante legal</h2>
+                        <div class="form-group">
+                            <label for="representant_name" class="col-form-label">Nombres</label>
+                            <input type="text" class="form-control" id="representant_name"
+                             placeholder="" [(ngModel)]="customer.representanteNombre"
+                             name="representanteNombre" required>
+                            <div class="representant_name-feedback">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="representant_sname" class="col-form-label">Apellidos</label>
+                            <input type="text" class="form-control" id="representant_sname"
+                            [(ngModel)]="customer.representanteApellido" placeholder=""
+                            name="representanteApellido" required>
+                            <div class="representant_sname-feedback">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="kind_of_id" class="col-form-label">Tipo de identificación</label>
+                            <select id="kind_of_id" class="form-control"
+                            [(ngModel)]="customer.representanteTipoDocumento"
+                            name="kind_of_id">
+                                <option>Selecciona</option>
+                                <option value="CC">Cedula de ciudadanía</option>
+                                <option value="CE">Cedula de extranjeria</option>
+                                <option value="PS">Pasaporte</option>
+                            </select>
+                            <div class="kind_of_id-feedback">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="representant_number" class="col-form-label">Número de identificación</label>
+                            <input type="text" class="form-control" id="representant_number"
+                            name="representanteNumeroIdentificacion"
+                            [(ngModel)]="customer.representanteNumeroIdentificacion"
+                            placeholder="" required>
+                            <div class="representant_number-feedback">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="representant_email" class="col-form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="representant_email"
+                             [(ngModel)]="customer.representanteCorreo"
+                             placeholder="example@gmail.com" name="representant_email" required>
+                            <div class="representant_email-feedback">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="representant_phone" class="col-form-label">Número de teléfono</label>
+                            <input type="text" class="form-control" id="representant_phone"
+                             [(ngModel)]="customer.representanteTelefono"
+                             placeholder="+300 477 5292"
+                             name="representanteTelefono"
+                             required>
+                            <div class="representant_phone-feedback">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Datos de contacto</h2>
+                        <div class="form-group">
+                            <label for="country" class="col-form-label">País</label>
+                            <select id="country" class="form-control" name="pais"  [(ngModel)]="customer.pais"
+                            (change)="getDepartments()" >
+                                <option value="" disabled selected>Selecciona</option>
+                                <option value="CO" >Colombia</option>
+                                <option value="US" >Estados unidos</option>
+                            </select>
+                            <div class="country-feedback">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="department" class="col-form-label">Departamento</label>
+                            <select id="department" class="form-control"
+                            name="departamento" [(ngModel)]="customer.departamento">
+                                <option value=""  selected>Selecciona</option>
+                                <option *ngFor="let obj of departmentArray" [ngValue]="obj.value">{{obj.name}}</option>
+                            </select>
+                            <div class="department-feedback">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="col-form-label">Dirección</label>
+                            <input type="text" name="direccion" class="form-control" id="address"
+                            placeholder="" [(ngModel)]="customer.direccion" required>
+                            <div class="address-feedback">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="col-form-label">Teléfono fijo</label>
+                            <input type="number" class="form-control" id="phone"
+                            [(ngModel)]="customer.telefonoFijo" name="telefonoFijo" placeholder="" required>
+                            <div class="phone-feedback">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cellphone" class="col-form-label">Teléfono movil</label>
+                            <input type="number" class="form-control" id="cellphone"
+                            [(ngModel)]="customer.telefonoMovil" name="telefonoMovil" placeholder="" required>
+                            <div class="cellphone-feedback">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 1em;">
+            <input type="submit" class="btn btn-primary btn-lg btn-block" value="Registrar" >
+        </div>
+    </form>
+</div>
